@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const PORT = process.env.PORT || 3000
 const errorRoutes = require("./src/controller/404")
+const db = require('./src/models')
 
 app.get('/', (req, res) => {
   res.send('Hello, world!');

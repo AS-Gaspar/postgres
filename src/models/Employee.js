@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/db.config')
-const Project = require('./Project')
+const Build = require('./Build')
 
 const Employee = sequelize.define('Employee', {
     id: {
@@ -25,7 +25,7 @@ const Employee = sequelize.define('Employee', {
     projectId: {
         type: DataTypes.INTEGER,
         references: {
-            model: Project,
+            model: Build,
             key: 'id'
         }
     }

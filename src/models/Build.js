@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/db.config')
 
-const Project = sequelize.define('Project', {
+const Build  = sequelize.define('Build', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -33,4 +33,4 @@ const Project = sequelize.define('Project', {
     }
 })
 
-module.exports = Project
+module.exports = Build
