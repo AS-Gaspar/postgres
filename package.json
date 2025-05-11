@@ -12,8 +12,10 @@
     "start-server": "node app.js"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.6",
     "express": "^5.1.0",
     "postgres": "^3.4.5",
+    "tailwindcss": "^4.1.6",
     "webpack": "^5.99.8"
   },
   "devDependencies": {
