@@ -14,7 +14,15 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/builds', buildRoutes)
+app.use(express.static(path.join(__dirname, 'public')))
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'views', 'index.html'))
+})
+
+app.use('api/builds', buildRoutes)
 app.use(errorRoutes.errorPage)
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

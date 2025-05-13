@@ -5,7 +5,7 @@ const Employee = require('./Employee')
 
 const db = {}
 
-db.sequelize = Sequelize
+db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 db.Build = Build
