@@ -16,7 +16,7 @@ db.sequelize.sync({ force: true })
         console.log('Database & tables synced!')
     })
     .catch(err => {
-        console.error('Unable to sync dabatase & tables:', err)
+        console.error('Unable to sync database & tables:', err)
     })
 
 module.exports = db
