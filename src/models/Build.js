@@ -4,6 +4,7 @@ const sequelize = require('../config/db.config')
 const Build  = sequelize.define('Build', {
     id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
@@ -19,12 +20,8 @@ const Build  = sequelize.define('Build', {
         type: DataTypes.DATE,
         allowNull: true
     },
-    startDate: {
-        type: DataTypes.DATE,
-        allowNull: true
-    },
     endDate: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: true
     },
     status: {

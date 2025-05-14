@@ -39,6 +39,54 @@ document.addEventListener('DOMContentLoaded', () => {
             obrasList.innerHTML = '<p class="text-red-500">Erro ao carregar obras.</p>'
         }
 
-        
+        addObraForm.addEventListener('submit', async (event) => {
+            event.preventDefault()
+            const formData = new FormData(addObraForm)
+            const obraData = Object.fromEntries(formData.entries())
+
+            if (!obraData.startDate) delete obraData.startDate
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(obraData)
+                })
+
+                if (!response.ok) {
+                    const errorData = await response.json()
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`)
+                }
+
+                addObraForm.reset()
+                fetchObras()
+            } catch (error) {
+                console.error('Erro ao adicionar obra:', error)
+                alert(`Erro ao adicionar obra: ${error.message}`)
+            }
+        })
+
+        window.deleteObra = async (id) => {
+            if (!confirm('Tem certeza que deseja excluir esta obra?')) {
+                return
+            }
+            try {
+                const response = await fetch(`${API_URL}/${id}`, {
+                    method: 'DELETE'
+                })
+                if (!response.ok) {
+                    const errorData = await response.json()
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`)
+                }
+                fetchObras()
+            } catch (error) {
+                console.error('Erro ao excluir obra:', error)
+                alert(`Erro ao excluir obra: ${error.message}`)
+            }
+
+            fetchObras()
+        }
     }
 })

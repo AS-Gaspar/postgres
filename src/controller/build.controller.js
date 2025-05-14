@@ -8,22 +8,22 @@ exports.create = async (req, res) => {
     })
     return
   }
-}
 
-const build = {
-  name: req.body.name,
-  description: req.body.description,
-  startDate: req.body.endDate,
-  status: req.body.status,
-}
+  const build = {
+    name: req.body.name,
+    description: req.body.description,
+    startDate: req.body.endDate,
+    status: req.body.status,
+  }
 
-try {
-  const data = await Build.create(build)
-  res.send(data)
-} catch (err) {
-  res.status(500).send({
-    message: err.message || "Some eror ocurred while creating the Build.",
-  })
+  try {
+    const data = await Build.create(build)
+    res.send(data)
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || "Some eror ocurred while creating the Build.",
+    })
+  }
 }
 
 exports.findAll = async (req, res) => {
@@ -101,3 +101,18 @@ exports.delete = async (req, res) => {
     })
   }
 }
+
+exports.deleteAll = async (req, res) => {
+  try {
+    const nums = await Project.destroy({
+      where: {},
+      truncate: false // set to true if you want to TRUNCATE the table
+    });
+    res.send({ message: `${nums} Projects were deleted successfully!` });
+  } catch (err) {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while removing all projects."
+    });
+  }
+};
