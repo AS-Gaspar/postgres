@@ -11,7 +11,7 @@ db.sequelize = sequelize
 db.Build = Build
 db.Employee = Employee
 
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
     .then(() => {
         console.log('Database & tables synced!')
     })
