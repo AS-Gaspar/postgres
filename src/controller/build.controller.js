@@ -12,7 +12,7 @@ exports.create = async (req, res) => {
   const build = {
     name: req.body.name,
     description: req.body.description,
-    startDate: req.body.endDate,
+    startDate: req.body.startDate,
     status: req.body.status,
   }
 
