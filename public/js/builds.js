@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         ? new Date(obra.startDate).toLocaleDateString()
                         : "Não definido"
                     }</p>
+                    <p class="text-sm text-gray-500">Término: ${
+                      obra.endDate
+                        ? new Date(obra.endDate).toLocaleDateString()
+                        : "Não definido"
+                    }</p>
                     <div class="mt-2">
                         <button onclick="deleteObra(${
                           obra.id

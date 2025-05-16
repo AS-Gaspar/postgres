@@ -13,6 +13,7 @@ exports.create = async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     startDate: req.body.startDate,
+    endDate: req.body.endDate,
     status: req.body.status,
   }
 
@@ -106,13 +107,13 @@ exports.deleteAll = async (req, res) => {
   try {
     const nums = await Project.destroy({
       where: {},
-      truncate: false // set to true if you want to TRUNCATE the table
-    });
-    res.send({ message: `${nums} Projects were deleted successfully!` });
+      truncate: false, // set to true if you want to TRUNCATE the table
+    })
+    res.send({ message: `${nums} Projects were deleted successfully!` })
   } catch (err) {
     res.status(500).send({
       message:
-        err.message || "Some error occurred while removing all projects."
-    });
+        err.message || "Some error occurred while removing all projects.",
+    })
   }
-};
+}
