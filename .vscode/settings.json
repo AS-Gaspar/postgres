@@ -1,3 +1,14 @@
 {
-  "sqltools.connections": []
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "database": "empreiteira_lk",
+      "username": "gaspar",
+      "group": "PostgreSQL",
+      "name": "empreiteira_lk"
+    }
+  ]
 }
