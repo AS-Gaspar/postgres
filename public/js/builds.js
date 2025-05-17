@@ -65,7 +65,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData(addObraForm)
     const obraData = Object.fromEntries(formData.entries())
 
-    if (!obraData.startDate) delete obraData.startDate
+    if (obraData.startDate) {
+      const parsedDate = new Date(obraData.startDate)
+      if (isNaN(parsedDate.getTime())) {
+        alert("Data de início inválida.")
+        return
+      }
+      obraData.startDate = parsedDate.toISOString()
+    } else {
+      delete obraData.startDate
+    }
+
+    if (obraData.endDate) {
+      const parsedDate = new Date(obraData.startDate)
+      if (isNaN(parsedDate.getTime())) {
+        alert("Data de início inválida.")
+        return
+      }
+      obraData.endDate = parsedDate.toISOString()
+    } else {
+      delete obraData.endDate
+    }
 
     try {
       const response = await fetch(API_URL, {
