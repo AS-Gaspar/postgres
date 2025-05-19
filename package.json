@@ -8,11 +8,12 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
     "start-server": "node app.js",
-    "tailwind:watch": "tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch",
-    "tailwind:build": "tailwindcss -i ./public/css/input.css -o ./public/css/style.css --minify",
-    "dev": "concurrently \"nodemon app.js\" \"npm run tailwind:watch\"",
-    "start": "nodemon app.js"
+    "build": "npx webpack --config webpack.config.js",
+    "dev": "webpack --config webpack.config.js --watch",
+    "dev:serve": "nodemon --watch dist --exec \"node app.js\"",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:serve\""
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.6",
@@ -21,12 +22,16 @@
     "pg": "^8.15.6",
     "postgres": "^3.4.5",
     "sequelize": "^6.37.7",
-    "tailwindcss": "^4.1.6",
-    "webpack": "^5.99.8"
+    "tailwindcss": "^4.1.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "babel-loader": "^10.0.0",
     "concurrently": "^9.1.2",
     "eslint": "^9.26.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1"
   }
 }
